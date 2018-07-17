@@ -70,7 +70,6 @@ namespace scenes {
 
       // adding the universe to the scene
       this.addChild(this._universe);
-
       // adding the starmini to the scene
       this.addChild(this._starmini);
 

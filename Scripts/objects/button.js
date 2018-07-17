@@ -49,12 +49,9 @@ var objects;
          *
          * @returns {void}
          */
-        Button.prototype.Start = function () {
-        };
-        Button.prototype.Update = function () {
-        };
-        Button.prototype.Reset = function () {
-        };
+        Button.prototype.Start = function () { };
+        Button.prototype.Update = function () { };
+        Button.prototype.Reset = function () { };
         return Button;
     }(objects.GameObject));
     objects.Button = Button;

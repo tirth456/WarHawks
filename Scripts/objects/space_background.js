@@ -10,38 +10,38 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var universe = /** @class */ (function (_super) {
-        __extends(universe, _super);
+    var space_background = /** @class */ (function (_super) {
+        __extends(space_background, _super);
         /**
          * Creates an instance of universe.
          * @memberof universe
          */
-        function universe() {
-            var _this = _super.call(this, managers.Game.AssetManager.getResult("universe")) || this;
+        function space_background() {
+            var _this = _super.call(this, managers.Game.AssetManager.getResult("space_background")) || this;
             _this.Start();
             return _this;
         }
         // private methods
-        universe.prototype._checkBounds = function () {
+        space_background.prototype._checkBounds = function () {
             // check top boundary
             if (this.y >= 0) {
                 this.Reset();
             }
         };
         // public methods
-        universe.prototype.Start = function () {
+        space_background.prototype.Start = function () {
             this._verticalSpeed = 5; // 5 pixels per frame
             this.Reset();
         };
-        universe.prototype.Update = function () {
+        space_background.prototype.Update = function () {
             this.y += this._verticalSpeed;
             this._checkBounds();
         };
-        universe.prototype.Reset = function () {
+        space_background.prototype.Reset = function () {
             this.y = -960;
         };
-        return universe;
+        return space_background;
     }(createjs.Bitmap));
-    objects.universe = universe;
+    objects.space_background = space_background;
 })(objects || (objects = {}));
-//# sourceMappingURL=ocean.js.map
+//# sourceMappingURL=space_background.js.map

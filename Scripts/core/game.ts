@@ -9,7 +9,7 @@
   let CurrentState: config.Scene;
 
   let Manifest = [
-    { id: "StartButton", src: "/Assets/images/StartButton.png" },
+    { id: "StartButton", src: "/Assets/images/StartButton.jpg" },
     { id: "NextButton", src: "/Assets/images/NextButton.png" },
     { id: "BackButton", src: "/Assets/images/BackButton.png" },
     { id: "plane", src: "/Assets/images/spaceship.png" },
@@ -19,7 +19,8 @@
     { id: "meteroid", src: "/Assets/images/meteroid.png" },
     { id: "yay", src: "/Assets/audio/yay.ogg" },
     { id: "thunder", src: "/Assets/audio/thunder.ogg" },
-    { id: "engine", src: "/Assets/audio/engine.ogg" }
+    { id: "engine", src: "/Assets/audio/background-music.mp3" },
+    { id: "space_background", src: "/Assets/audio/space_background.jpg" }
   ];
 
   function Init(): void {
