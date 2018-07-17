@@ -1,14 +1,14 @@
 namespace objects {
-  export class Ocean extends createjs.Bitmap {
+  export class universe extends createjs.Bitmap {
     // member variables
     private _verticalSpeed: number;
 
     /**
-     * Creates an instance of Ocean.
-     * @memberof Ocean
+     * Creates an instance of universe.
+     * @memberof universe
      */
     constructor() {
-      super(managers.Game.AssetManager.getResult("ocean"));
+      super(managers.Game.AssetManager.getResult("universe"));
 
       this.Start();
     }

@@ -12,9 +12,10 @@
         { id: "NextButton", src: "/Assets/images/NextButton.png" },
         { id: "BackButton", src: "/Assets/images/BackButton.png" },
         { id: "plane", src: "/Assets/images/spaceship.png" },
-        { id: "ocean", src: "/Assets/images/background.png" },
+        { id: "universe", src: "/Assets/images/background.png" },
         { id: "starmini", src: "/Assets/images/starmini.png" },
         { id: "asteroid", src: "/Assets/images/asteroid.png" },
+        { id: "meteroid", src: "/Assets/images/meteroid.png" },
         { id: "yay", src: "/Assets/audio/yay.ogg" },
         { id: "thunder", src: "/Assets/audio/thunder.ogg" },
         { id: "engine", src: "/Assets/audio/engine.ogg" }
