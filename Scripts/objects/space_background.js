@@ -12,6 +12,7 @@ var objects;
 (function (objects) {
     var space_background = /** @class */ (function (_super) {
         __extends(space_background, _super);
+        // member variables
         /**
          * Creates an instance of universe.
          * @memberof universe
@@ -30,11 +31,9 @@ var objects;
         };
         // public methods
         space_background.prototype.Start = function () {
-            this._verticalSpeed = 5; // 5 pixels per frame
             this.Reset();
         };
         space_background.prototype.Update = function () {
-            this.y += this._verticalSpeed;
             this._checkBounds();
         };
         space_background.prototype.Reset = function () {

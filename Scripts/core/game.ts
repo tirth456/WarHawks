@@ -17,10 +17,10 @@
     { id: "starmini", src: "/Assets/images/starmini.png" },
     { id: "asteroid", src: "/Assets/images/asteroid.png" },
     { id: "meteroid", src: "/Assets/images/meteroid.png" },
-    { id: "yay", src: "/Assets/audio/yay.ogg" },
-    { id: "thunder", src: "/Assets/audio/thunder.ogg" },
+    { id: "yay", src: "/Assets/audio/coin.wav" },
+    { id: "thunder", src: "/Assets/audio/explosion.mp3" },
     { id: "engine", src: "/Assets/audio/background-music.mp3" },
-    { id: "space_background", src: "/Assets/audio/space_background.jpg" }
+    { id: "space_background", src: "/Assets/images/space_background.jpg" }
   ];
 
   function Init(): void {

@@ -40,7 +40,7 @@ namespace scenes {
 
     public Main(): void {
       console.log(`Starting - START SCENE`);
-      //this.addChild(this._startBackground);
+      this.addChild(this._startBackground);
       this.addChild(this._welcomeLabel);
       this.addChild(this._startButton);
 
