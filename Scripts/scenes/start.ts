@@ -3,7 +3,8 @@ namespace scenes {
     // member variables
     private _welcomeLabel: objects.Label;
     private _startButton: objects.Button;
-    private _startBackground: objects.space_background;
+    private _ocean: objects.Universe;
+
     // constructors
     constructor() {
       super();
@@ -15,22 +16,30 @@ namespace scenes {
 
     // public methods
     public Start(): void {
-      this._startBackground = new objects.space_background();
+      this._ocean = new objects.Universe();
+
       this._welcomeLabel = new objects.Label(
-        "Welcome!",
-        "60px",
+        "War Hawks",
+        "80px",
         "Consolas",
-        "#000000",
-        320,
-        240,
+        "#FFFF00",
+        config.Screen.HALF_WIDTH,
+        config.Screen.HALF_HEIGHT,
         true
       );
-      this._startButton = new objects.Button("StartButton", 320, 360, true);
+      this._startButton = new objects.Button(
+        "StartButton",
+        config.Screen.HALF_WIDTH,
+        360,
+        true
+      );
 
       this.Main();
     }
 
-    public Update(): void {}
+    public Update(): void {
+      this._ocean.Update();
+    }
 
     public Reset(): void {}
 
@@ -40,7 +49,8 @@ namespace scenes {
 
     public Main(): void {
       console.log(`Starting - START SCENE`);
-      this.addChild(this._startBackground);
+      this.addChild(this._ocean);
+
       this.addChild(this._welcomeLabel);
       this.addChild(this._startButton);
 

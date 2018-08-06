@@ -10,38 +10,38 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var universe = /** @class */ (function (_super) {
-        __extends(universe, _super);
+    var Universe = /** @class */ (function (_super) {
+        __extends(Universe, _super);
         /**
-         * Creates an instance of universe.
-         * @memberof universe
+         * Creates an instance of Universe.
+         * @memberof Universe
          */
-        function universe() {
+        function Universe() {
             var _this = _super.call(this, managers.Game.AssetManager.getResult("universe")) || this;
             _this.Start();
             return _this;
         }
         // private methods
-        universe.prototype._checkBounds = function () {
+        Universe.prototype._checkBounds = function () {
             // check top boundary
             if (this.y >= 0) {
                 this.Reset();
             }
         };
         // public methods
-        universe.prototype.Start = function () {
+        Universe.prototype.Start = function () {
             this._verticalSpeed = 5; // 5 pixels per frame
             this.Reset();
         };
-        universe.prototype.Update = function () {
+        Universe.prototype.Update = function () {
             this.y += this._verticalSpeed;
             this._checkBounds();
         };
-        universe.prototype.Reset = function () {
+        Universe.prototype.Reset = function () {
             this.y = -960;
         };
-        return universe;
+        return Universe;
     }(createjs.Bitmap));
-    objects.universe = universe;
+    objects.Universe = Universe;
 })(objects || (objects = {}));
 //# sourceMappingURL=Universe.js.map

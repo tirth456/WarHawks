@@ -13,8 +13,8 @@ var objects;
     var Meteroid = /** @class */ (function (_super) {
         __extends(Meteroid, _super);
         /**
-         * Creates an instance of asteroid.
-         * @memberof asteroid
+         * Creates an instance of Meteroid.
+         * @memberof Meteroid
          */
         function Meteroid() {
             var _this = _super.call(this, "meteroid") || this;
@@ -36,10 +36,12 @@ var objects;
         };
         Meteroid.prototype.Update = function () {
             this.y += this._verticalSpeed;
+            this.x += this._horizontalSpeed;
             this._checkBounds();
         };
         Meteroid.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor(Math.random() * 5 + 10); // between 5 and 10 ppf
+            this._verticalSpeed = Math.floor(Math.random() * 5 + 5); // between 5 and 10 ppf
+            this._horizontalSpeed = Math.floor(Math.random() * 4 - 2); // between -2 and 2 ppf
             this.y = -this.height;
             this.x = Math.floor(Math.random() * (config.Screen.WIDTH - this.width) + this.halfWidth);
         };

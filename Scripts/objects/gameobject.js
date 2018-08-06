@@ -28,9 +28,12 @@ var objects;
             this.isColliding = false;
         };
         // public methods
-        GameObject.prototype.Start = function () { };
-        GameObject.prototype.Update = function () { };
-        GameObject.prototype.Reset = function () { };
+        GameObject.prototype.Start = function () {
+        };
+        GameObject.prototype.Update = function () {
+        };
+        GameObject.prototype.Reset = function () {
+        };
         return GameObject;
     }(createjs.Bitmap));
     objects.GameObject = GameObject;

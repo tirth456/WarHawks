@@ -46,7 +46,7 @@
 
 "animations": {
     "bullet": { "frames": [0] },
-    "asteroid": { "frames": [1] },
+    "meteroid": { "frames": [1] },
     "coin01": { "frames": [2] },
     "coin02": { "frames": [3] },
     "coin03": { "frames": [4] },

@@ -1,47 +1,71 @@
-module scenes {
-    export class End extends objects.Scene {
-        // member variables
-        private _endLabel: objects.Label;
-        private _backButton: objects.Button;
+namespace scenes {
+  export class End extends objects.Scene {
+    // member variables
+    private _gameOverLabel: objects.Label;
+    private _restartButton: objects.Button;
+    private _ocean: objects.Universe;
 
-        // constructors
-        constructor() {
-            super();
+    // constructors
+    constructor() {
+      super();
 
-            this.Start();
-        }
-
-        // private methods
-
-        // public methods
-        public Start():void {
-
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "#000000", 320, 240, true);
-            this._backButton = new objects.Button("BackButton", 320, 360, true);
-
-            this.Main();
-        }
-
-        public Update():void {
-
-        }
-
-        public Reset():void {
-
-        }
-
-        public Destroy():void {
-            this.removeAllChildren();
-        }
-
-        public Main():void {
-            console.log(`Starting - END SCENE`);
-            this.addChild(this._endLabel);
-            this.addChild(this._backButton);
-
-            this._backButton.on("click", function(){
-                managers.Game.CurrentState = config.Scene.PLAY;
-            }, this);
-        }
+      this.Start();
     }
+
+    // private methods
+
+    // public methods
+    public Start(): void {
+      this._ocean = new objects.Universe();
+
+      this._gameOverLabel = new objects.Label(
+        "Game Over!",
+        "80px",
+        "Consolas",
+        "#FFFF00",
+        config.Screen.HALF_WIDTH,
+        160,
+        true
+      );
+      this._restartButton = new objects.Button(
+        "RestartButton",
+        config.Screen.HALF_WIDTH,
+        360,
+        true
+      );
+
+      this.Main();
+    }
+
+    public Update(): void {
+      this._ocean.Update();
+    }
+
+    public Reset(): void {}
+
+    public Destroy(): void {
+      this.removeAllChildren();
+    }
+
+    public Main(): void {
+      console.log(`Starting - END SCENE`);
+
+      this.addChild(this._ocean);
+
+      this.addChild(this._gameOverLabel);
+
+      this.addChild(managers.Game.ScoreBoard.HighScoreLabel);
+
+      this.addChild(this._restartButton);
+
+      this._restartButton.on(
+        "click",
+        function() {
+          managers.Game.ScoreBoard.Reset();
+          managers.Game.CurrentState = config.Scene.PLAY;
+        },
+        this
+      );
+    }
+  }
 }

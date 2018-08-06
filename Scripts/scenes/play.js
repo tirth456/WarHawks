@@ -19,10 +19,10 @@ var scenes;
             return _this;
         }
         // private methods
-        Play.prototype._buildasteroids = function () {
-            for (var count = 0; count < this._asteroidNum; count++) {
-                this._asteroids.push(new objects.Asteroid());
-                //this._asteroids[count] = new objects.asteroid();
+        Play.prototype._buildClouds = function () {
+            for (var count = 0; count < this._cloudNum; count++) {
+                this._clouds.push(new objects.Meteroid());
+                //this._clouds[count] = new objects.Meteroid();
             }
         };
         // public methods
@@ -31,45 +31,45 @@ var scenes;
             this.engineSound.loop = -1;
             this.engineSound.volume = 0.1;
             this._plane = new objects.Plane();
-            this._universe = new objects.universe();
-            this._starmini = new objects.Starmini();
-            this._meteroid = new objects.Meteroid();
-            // creates an empty array of type asteroid
-            this._asteroids = new Array();
-            this._asteroidNum = 3;
-            this._buildasteroids();
+            this._ocean = new objects.Universe();
+            this._island = new objects.Starmini();
+            // creates an empty array of type Meteroid
+            this._clouds = new Array();
+            this._cloudNum = 3;
+            this._buildClouds();
             this.Main();
         };
         Play.prototype.Update = function () {
             var _this = this;
             this._plane.Update();
-            this._universe.Update();
-            this._starmini.Update();
-            this._meteroid.Update();
-            managers.Collision.check(this._plane, this._starmini);
-            this._asteroids.forEach(function (asteroid) {
-                asteroid.Update();
-                managers.Collision.check(_this._plane, asteroid);
+            this._ocean.Update();
+            this._island.Update();
+            managers.Collision.check(this._plane, this._island);
+            this._clouds.forEach(function (meteroid) {
+                meteroid.Update();
+                managers.Collision.check(_this._plane, meteroid);
             });
         };
         Play.prototype.Reset = function () { };
         Play.prototype.Destroy = function () {
+            this.engineSound.stop();
             this.removeAllChildren();
         };
         Play.prototype.Main = function () {
             console.log("Starting - PLAY SCENE");
             // adding the universe to the scene
-            this.addChild(this._universe);
+            this.addChild(this._ocean);
             // adding the starmini to the scene
-            this.addChild(this._starmini);
+            this.addChild(this._island);
             // adding the plane to the scene
             this.addChild(this._plane);
-            // adding the asteroid to the scene
-            for (var _i = 0, _a = this._asteroids; _i < _a.length; _i++) {
-                var asteroid = _a[_i];
-                this.addChild(asteroid);
+            // adding the meteroid to the scene
+            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
+                var meteroid = _a[_i];
+                this.addChild(meteroid);
             }
-            this.addChild(this._meteroid);
+            this.addChild(managers.Game.ScoreBoard.LivesLabel);
+            this.addChild(managers.Game.ScoreBoard.ScoreLabel);
         };
         return Play;
     }(objects.Scene));

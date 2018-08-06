@@ -7,20 +7,18 @@
   let AssetManager: createjs.LoadQueue;
   let CurrentScene: objects.Scene;
   let CurrentState: config.Scene;
+  let ScoreBoard: managers.ScoreBoard;
 
   let Manifest = [
-    { id: "StartButton", src: "/Assets/images/StartButton.jpg" },
-    { id: "NextButton", src: "/Assets/images/NextButton.png" },
-    { id: "BackButton", src: "/Assets/images/BackButton.png" },
+    { id: "StartButton", src: "/Assets/images/StartButton.png" },
+    { id: "RestartButton", src: "/Assets/images/RestartButton.png" },
     { id: "plane", src: "/Assets/images/spaceship.png" },
     { id: "universe", src: "/Assets/images/background.png" },
     { id: "starmini", src: "/Assets/images/starmini.png" },
-    { id: "asteroid", src: "/Assets/images/asteroid.png" },
     { id: "meteroid", src: "/Assets/images/meteroid.png" },
     { id: "yay", src: "/Assets/audio/coin.wav" },
     { id: "thunder", src: "/Assets/audio/explosion.mp3" },
-    { id: "engine", src: "/Assets/audio/background-music.mp3" },
-    { id: "space_background", src: "/Assets/images/space_background.jpg" }
+    { id: "engine", src: "/Assets/audio/background-music.mp3" }
   ];
 
   function Init(): void {
@@ -51,6 +49,9 @@
 
     CurrentState = config.Scene.START;
     managers.Game.CurrentState = CurrentState;
+
+    ScoreBoard = new managers.ScoreBoard();
+    managers.Game.ScoreBoard = ScoreBoard;
 
     // This is where all the magic happens
     Main();

@@ -2,11 +2,10 @@ namespace scenes {
   export class Play extends objects.Scene {
     // member variables
     private _plane: objects.Plane;
-    private _universe: objects.universe;
-    private _starmini: objects.Starmini;
-    private _asteroids: objects.Asteroid[];
-    private _asteroidNum: number;
-    private _meteroid: objects.Meteroid;
+    private _ocean: objects.Universe;
+    private _island: objects.Starmini;
+    private _clouds: objects.Meteroid[];
+    private _cloudNum: number;
 
     public engineSound: createjs.AbstractSoundInstance;
 
@@ -18,10 +17,10 @@ namespace scenes {
     }
 
     // private methods
-    private _buildasteroids(): void {
-      for (let count = 0; count < this._asteroidNum; count++) {
-        this._asteroids.push(new objects.Asteroid());
-        //this._asteroids[count] = new objects.asteroid();
+    private _buildClouds(): void {
+      for (let count = 0; count < this._cloudNum; count++) {
+        this._clouds.push(new objects.Meteroid());
+        //this._clouds[count] = new objects.Meteroid();
       }
     }
 
@@ -32,36 +31,35 @@ namespace scenes {
       this.engineSound.volume = 0.1;
 
       this._plane = new objects.Plane();
-      this._universe = new objects.universe();
-      this._starmini = new objects.Starmini();
-      this._meteroid = new objects.Meteroid();
+      this._ocean = new objects.Universe();
+      this._island = new objects.Starmini();
 
-      // creates an empty array of type asteroid
-      this._asteroids = new Array<objects.Asteroid>();
-      this._asteroidNum = 3;
+      // creates an empty array of type Meteroid
+      this._clouds = new Array<objects.Meteroid>();
+      this._cloudNum = 3;
 
-      this._buildasteroids();
+      this._buildClouds();
 
       this.Main();
     }
 
     public Update(): void {
       this._plane.Update();
-      this._universe.Update();
-      this._starmini.Update();
-      this._meteroid.Update();
+      this._ocean.Update();
+      this._island.Update();
 
-      managers.Collision.check(this._plane, this._starmini);
+      managers.Collision.check(this._plane, this._island);
 
-      this._asteroids.forEach(asteroid => {
-        asteroid.Update();
-        managers.Collision.check(this._plane, asteroid);
+      this._clouds.forEach(meteroid => {
+        meteroid.Update();
+        managers.Collision.check(this._plane, meteroid);
       });
     }
 
     public Reset(): void {}
 
     public Destroy(): void {
+      this.engineSound.stop();
       this.removeAllChildren();
     }
 
@@ -69,17 +67,21 @@ namespace scenes {
       console.log(`Starting - PLAY SCENE`);
 
       // adding the universe to the scene
-      this.addChild(this._universe);
+      this.addChild(this._ocean);
+
       // adding the starmini to the scene
-      this.addChild(this._starmini);
+      this.addChild(this._island);
 
       // adding the plane to the scene
       this.addChild(this._plane);
-      // adding the asteroid to the scene
-      for (const asteroid of this._asteroids) {
-        this.addChild(asteroid);
+
+      // adding the meteroid to the scene
+      for (const meteroid of this._clouds) {
+        this.addChild(meteroid);
       }
-      this.addChild(this._meteroid);
+
+      this.addChild(managers.Game.ScoreBoard.LivesLabel);
+      this.addChild(managers.Game.ScoreBoard.ScoreLabel);
     }
   }
 }
